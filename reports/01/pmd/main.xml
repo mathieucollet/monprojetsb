@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd xmlns="http://pmd.sourceforge.net/report/2.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://pmd.sourceforge.net/report/2.0.0 http://pmd.sourceforge.net/report_2_0_0.xsd"
+    version="6.21.0" timestamp="2020-04-09T15:13:32.221">
+<file name="/home/mayeut/code/java_workspace/monprojetsb/src/main/java/com/tactfactory/monprojetsb/controllers/ProductController.java">
+<violation beginline="15" endline="15" begincolumn="31" endcolumn="47" rule="BeanMembersShouldSerialize" ruleset="Error Prone" package="com.tactfactory.monprojetsb.controllers" class="ProductController" variable="productRepository" externalInfoUrl="https://pmd.github.io/pmd-6.21.0/pmd_rules_java_errorprone.html#beanmembersshouldserialize" priority="3">
+Found non-transient, non-static member. Please mark as transient or provide accessors.
+</violation>
+<violation beginline="49" endline="49" begincolumn="120" endcolumn="123" rule="NullAssignment" ruleset="Error Prone" package="com.tactfactory.monprojetsb.controllers" class="ProductController" method="details" externalInfoUrl="https://pmd.github.io/pmd-6.21.0/pmd_rules_java_errorprone.html#nullassignment" priority="3">
+Assigning an Object to null is a code smell.  Consider refactoring.
+</violation>
+</file>
+<file name="/home/mayeut/code/java_workspace/monprojetsb/src/main/java/com/tactfactory/monprojetsb/controllers/UserController.java">
+<violation beginline="15" endline="15" begincolumn="28" endcolumn="41" rule="BeanMembersShouldSerialize" ruleset="Error Prone" package="com.tactfactory.monprojetsb.controllers" class="UserController" variable="userRepository" externalInfoUrl="https://pmd.github.io/pmd-6.21.0/pmd_rules_java_errorprone.html#beanmembersshouldserialize" priority="3">
+Found non-transient, non-static member. Please mark as transient or provide accessors.
+</violation>
+<violation beginline="49" endline="49" begincolumn="114" endcolumn="117" rule="NullAssignment" ruleset="Error Prone" package="com.tactfactory.monprojetsb.controllers" class="UserController" method="details" externalInfoUrl="https://pmd.github.io/pmd-6.21.0/pmd_rules_java_errorprone.html#nullassignment" priority="3">
+Assigning an Object to null is a code smell.  Consider refactoring.
+</violation>
+</file>
+</pmd>
