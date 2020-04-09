@@ -1,0 +1,8 @@
+body {
+    background: #ececec;
+}
+
+body table td.min, body table th.min {
+    width: 1% !important;
+    white-space: nowrap !important;
+}
