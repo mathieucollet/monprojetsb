@@ -4,9 +4,6 @@ package com.tactfactory.monprojetsb.entities;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import java.util.ArrayList;
-import java.util.List;
 
 
 @Entity
@@ -18,6 +15,11 @@ public class Product {
     private Float price;
 
     public Product() {
+    }
+
+    public Product(String name, Float price) {
+        this.name = name;
+        this.price = price;
     }
 
     public long getId() {
