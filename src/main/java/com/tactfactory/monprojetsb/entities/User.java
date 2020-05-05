@@ -25,6 +25,12 @@ public class User {
         this.lastname = lastname;
     }
 
+    public User(String firstname, String lastname, List<Product> products) {
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.products = products;
+    }
+
     public long getId() {
         return id;
     }
