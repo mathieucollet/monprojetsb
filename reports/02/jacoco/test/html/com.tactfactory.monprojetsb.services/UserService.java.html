@@ -14,25 +14,24 @@ import java.util.List;
     @Autowired
     private UserRepository userRepository;
 
-
     @Override
     public User save(@ModelAttribute User item) {
-<span class="fc" id="L20">        return this.userRepository.save(item);</span>
+<span class="fc" id="L19">        return this.userRepository.save(item);</span>
     }
 
     @Override
     public void delete(User item) {
-<span class="fc" id="L25">        this.userRepository.delete(item);</span>
-<span class="fc" id="L26">    }</span>
+<span class="fc" id="L24">        this.userRepository.delete(item);</span>
+<span class="fc" id="L25">    }</span>
 
     @Override
     public User findById(Long id) {
-<span class="pc bpc" id="L30" title="1 of 2 branches missed.">        return userRepository.findById(id).isPresent() ? userRepository.findById(id).get() : null;</span>
+<span class="pc bpc" id="L29" title="1 of 2 branches missed.">        return userRepository.findById(id).isPresent() ? userRepository.findById(id).get() : null;</span>
     }
 
     @Override
     public List&lt;User&gt; findAll() {
-<span class="fc" id="L35">        return userRepository.findAll();</span>
+<span class="fc" id="L34">        return userRepository.findAll();</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

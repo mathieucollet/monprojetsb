@@ -24,7 +24,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 @ComponentScan(basePackages = "com.tactfactory.monprojetsb")
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 @DataJpaTest
-public class UserServiceTest {
+public class UserServiceWithProductsTest {
 
     @Autowired
     private UserService userService;
@@ -39,78 +39,6 @@ public class UserServiceTest {
     public void cleanUserTable() {
         userRepository.deleteAll();
         productRepository.deleteAll();
-    }
-
-    @Test
-    public void userTestInsertionAddARecord() {
-        long beforeInsert = userRepository.count();
-        userService.save(new User());
-        long afterInsert = userRepository.count();
-        assertEquals(beforeInsert + 1, afterInsert);
-    }
-
-    @Test
-    public void userTestInsertionDoNotAlterData() {
-        User user = new User("Prénom", "Nom");
-        userService.save(user);
-        User createdUser = userRepository.findById(user.getId()).get();
-        assertTrue(isValid(createdUser, user));
-    }
-
-    @Test
-    public void userTestUpdateDoNoAlterData() {
-        User user = new User("Prénom", "Nom");
-        userService.save(user);
-        User createdUser = userRepository.findById(user.getId()).get();
-        createdUser.setFirstname("NouveauPrénom");
-        userService.save(createdUser);
-        User updatedUser = userRepository.findById(user.getId()).get();
-        assertTrue(isValid(updatedUser, user));
-    }
-
-    @Test
-    public void userTestFindDataAreTheGoodOnes() {
-        User user = new User("Prénom", "Nom");
-        userRepository.save(user);
-        User createdUser = userService.findById(user.getId());
-        assertTrue(isValid(createdUser, user));
-    }
-
-    @Test
-    public void userTestFindAllDataAreTheGoodOnes() {
-        List<User> users = new ArrayList();
-        users.add(new User("A", "AA"));
-        users.add(new User("B", "BB"));
-        users.add(new User("C", "CC"));
-        userRepository.saveAll(users);
-
-        List<User> createdUsers = userService.findAll();
-        boolean isValid = listIsValid(users, createdUsers);
-        assertTrue(isValid);
-    }
-
-    @Test
-    public void userTestDeleteRemoveARecord() {
-        User user = new User();
-        userRepository.save(user);
-        long beforeInsert = userRepository.count();
-        userService.delete(user);
-        long afterInsert = userRepository.count();
-        assertEquals(beforeInsert, afterInsert + 1);
-    }
-
-    @Test
-    public void userTestDeleteRemoveTheCorrectRecord() {
-        List<User> users = new ArrayList();
-        users.add(new User("A", "AA"));
-        users.add(new User("B", "BB"));
-        users.add(new User("C", "CC"));
-        userRepository.saveAll(users);
-        userService.delete(users.get(1));
-        users.remove(1);
-        List<User> createdUsers = userRepository.findAll();
-        boolean isValid = listIsValid(users, createdUsers);
-        assertTrue(isValid);
     }
 
     @Test
@@ -223,17 +151,6 @@ public class UserServiceTest {
         boolean isValid = false;
         if (createdUser.getFirstname().equals(user.getFirstname()) && createdUser.getLastname().equals(user.getLastname())) {
             isValid = true;
-        }
-        return isValid;
-    }
-
-    private boolean listIsValid(List<User> users, List<User> createdUsers) {
-        boolean isValid = false;
-        for (int i = 0; i < users.size(); i++) {
-            isValid = isValid(createdUsers.get(i), users.get(i));
-            if (!isValid) {
-                break;
-            }
         }
         return isValid;
     }

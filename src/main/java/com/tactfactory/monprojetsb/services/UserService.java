@@ -14,7 +14,6 @@ public class UserService implements BaseService<User, Long> {
     @Autowired
     private UserRepository userRepository;
 
-
     @Override
     public User save(@ModelAttribute User item) {
         return this.userRepository.save(item);
