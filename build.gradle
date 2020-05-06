@@ -25,6 +25,7 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-freemarker'
     implementation 'org.springframework.boot:spring-boot-starter-web'
     runtimeOnly 'mysql:mysql-connector-java'
+    testImplementation("com.h2database:h2:1.4.197")
     testImplementation('org.springframework.boot:spring-boot-starter-test') {
     }
     implementation 'org.jetbrains:annotations:15.0'

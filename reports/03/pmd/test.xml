@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd xmlns="http://pmd.sourceforge.net/report/2.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://pmd.sourceforge.net/report/2.0.0 http://pmd.sourceforge.net/report_2_0_0.xsd"
+    version="6.21.0" timestamp="2020-05-06T14:13:13.489">
+<file name="/home/mayeut/code/java_workspace/monprojetsb/src/test/java/com/tactfactory/monprojetsb/mocks/repositories/MockitoProductRepository.java">
+<violation beginline="16" endline="16" begincolumn="39" endcolumn="48" rule="BeanMembersShouldSerialize" ruleset="Error Prone" package="com.tactfactory.monprojetsb.mocks.repositories" class="MockitoProductRepository" variable="repository" externalInfoUrl="https://pmd.github.io/pmd-6.21.0/pmd_rules_java_errorprone.html#beanmembersshouldserialize" priority="3">
+Found non-transient, non-static member. Please mark as transient or provide accessors.
+</violation>
+<violation beginline="18" endline="18" begincolumn="20" endcolumn="25" rule="BeanMembersShouldSerialize" ruleset="Error Prone" package="com.tactfactory.monprojetsb.mocks.repositories" class="MockitoProductRepository" variable="entity" externalInfoUrl="https://pmd.github.io/pmd-6.21.0/pmd_rules_java_errorprone.html#beanmembersshouldserialize" priority="3">
+Found non-transient, non-static member. Please mark as transient or provide accessors.
+</violation>
+<violation beginline="20" endline="20" begincolumn="26" endcolumn="33" rule="BeanMembersShouldSerialize" ruleset="Error Prone" package="com.tactfactory.monprojetsb.mocks.repositories" class="MockitoProductRepository" variable="products" externalInfoUrl="https://pmd.github.io/pmd-6.21.0/pmd_rules_java_errorprone.html#beanmembersshouldserialize" priority="3">
+Found non-transient, non-static member. Please mark as transient or provide accessors.
+</violation>
+</file>
+<file name="/home/mayeut/code/java_workspace/monprojetsb/src/test/java/com/tactfactory/monprojetsb/mocks/repositories/MockitoUserRepository.java">
+<violation beginline="16" endline="16" begincolumn="36" endcolumn="45" rule="BeanMembersShouldSerialize" ruleset="Error Prone" package="com.tactfactory.monprojetsb.mocks.repositories" class="MockitoUserRepository" variable="repository" externalInfoUrl="https://pmd.github.io/pmd-6.21.0/pmd_rules_java_errorprone.html#beanmembersshouldserialize" priority="3">
+Found non-transient, non-static member. Please mark as transient or provide accessors.
+</violation>
+<violation beginline="18" endline="18" begincolumn="17" endcolumn="22" rule="BeanMembersShouldSerialize" ruleset="Error Prone" package="com.tactfactory.monprojetsb.mocks.repositories" class="MockitoUserRepository" variable="entity" externalInfoUrl="https://pmd.github.io/pmd-6.21.0/pmd_rules_java_errorprone.html#beanmembersshouldserialize" priority="3">
+Found non-transient, non-static member. Please mark as transient or provide accessors.
+</violation>
+<violation beginline="20" endline="20" begincolumn="23" endcolumn="27" rule="BeanMembersShouldSerialize" ruleset="Error Prone" package="com.tactfactory.monprojetsb.mocks.repositories" class="MockitoUserRepository" variable="users" externalInfoUrl="https://pmd.github.io/pmd-6.21.0/pmd_rules_java_errorprone.html#beanmembersshouldserialize" priority="3">
+Found non-transient, non-static member. Please mark as transient or provide accessors.
+</violation>
+</file>
+<file name="/home/mayeut/code/java_workspace/monprojetsb/src/test/java/com/tactfactory/monprojetsb/services/ProductServiceTest.java">
+<violation beginline="27" endline="27" begincolumn="28" endcolumn="41" rule="BeanMembersShouldSerialize" ruleset="Error Prone" package="com.tactfactory.monprojetsb.services" class="ProductServiceTest" variable="productService" externalInfoUrl="https://pmd.github.io/pmd-6.21.0/pmd_rules_java_errorprone.html#beanmembersshouldserialize" priority="3">
+Found non-transient, non-static member. Please mark as transient or provide accessors.
+</violation>
+<violation beginline="30" endline="30" begincolumn="31" endcolumn="47" rule="BeanMembersShouldSerialize" ruleset="Error Prone" package="com.tactfactory.monprojetsb.services" class="ProductServiceTest" variable="productRepository" externalInfoUrl="https://pmd.github.io/pmd-6.21.0/pmd_rules_java_errorprone.html#beanmembersshouldserialize" priority="3">
+Found non-transient, non-static member. Please mark as transient or provide accessors.
+</violation>
+<violation beginline="32" endline="32" begincolumn="21" endcolumn="33" rule="BeanMembersShouldSerialize" ruleset="Error Prone" package="com.tactfactory.monprojetsb.services" class="ProductServiceTest" variable="productEntity" externalInfoUrl="https://pmd.github.io/pmd-6.21.0/pmd_rules_java_errorprone.html#beanmembersshouldserialize" priority="3">
+Found non-transient, non-static member. Please mark as transient or provide accessors.
+</violation>
+<violation beginline="110" endline="112" begincolumn="13" endcolumn="26" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="com.tactfactory.monprojetsb.services" class="ProductServiceTest" method="isValid" variable="isValid" externalInfoUrl="https://pmd.github.io/pmd-6.21.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
+Found 'DD'-anomaly for variable 'isValid' (lines '110'-'112').
+</violation>
+<violation beginline="118" endline="120" begincolumn="13" endcolumn="70" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="com.tactfactory.monprojetsb.services" class="ProductServiceTest" method="listIsValid" variable="isValid" externalInfoUrl="https://pmd.github.io/pmd-6.21.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
+Found 'DD'-anomaly for variable 'isValid' (lines '118'-'120').
+</violation>
+</file>
+<file name="/home/mayeut/code/java_workspace/monprojetsb/src/test/java/com/tactfactory/monprojetsb/services/UserServiceTest.java">
+<violation beginline="27" endline="27" begincolumn="25" endcolumn="35" rule="BeanMembersShouldSerialize" ruleset="Error Prone" package="com.tactfactory.monprojetsb.services" class="UserServiceTest" variable="userService" externalInfoUrl="https://pmd.github.io/pmd-6.21.0/pmd_rules_java_errorprone.html#beanmembersshouldserialize" priority="3">
+Found non-transient, non-static member. Please mark as transient or provide accessors.
+</violation>
+<violation beginline="30" endline="30" begincolumn="28" endcolumn="41" rule="BeanMembersShouldSerialize" ruleset="Error Prone" package="com.tactfactory.monprojetsb.services" class="UserServiceTest" variable="userRepository" externalInfoUrl="https://pmd.github.io/pmd-6.21.0/pmd_rules_java_errorprone.html#beanmembersshouldserialize" priority="3">
+Found non-transient, non-static member. Please mark as transient or provide accessors.
+</violation>
+<violation beginline="32" endline="32" begincolumn="18" endcolumn="27" rule="BeanMembersShouldSerialize" ruleset="Error Prone" package="com.tactfactory.monprojetsb.services" class="UserServiceTest" variable="userEntity" externalInfoUrl="https://pmd.github.io/pmd-6.21.0/pmd_rules_java_errorprone.html#beanmembersshouldserialize" priority="3">
+Found non-transient, non-static member. Please mark as transient or provide accessors.
+</violation>
+<violation beginline="110" endline="112" begincolumn="13" endcolumn="26" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="com.tactfactory.monprojetsb.services" class="UserServiceTest" method="isValid" variable="isValid" externalInfoUrl="https://pmd.github.io/pmd-6.21.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
+Found 'DD'-anomaly for variable 'isValid' (lines '110'-'112').
+</violation>
+<violation beginline="118" endline="120" begincolumn="13" endcolumn="64" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="com.tactfactory.monprojetsb.services" class="UserServiceTest" method="listIsValid" variable="isValid" externalInfoUrl="https://pmd.github.io/pmd-6.21.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
+Found 'DD'-anomaly for variable 'isValid' (lines '118'-'120').
+</violation>
+</file>
+<file name="/home/mayeut/code/java_workspace/monprojetsb/src/test/java/com/tactfactory/monprojetsb/services/UserServiceWithProductsTest.java">
+<violation beginline="30" endline="30" begincolumn="25" endcolumn="35" rule="BeanMembersShouldSerialize" ruleset="Error Prone" package="com.tactfactory.monprojetsb.services" class="UserServiceWithProductsTest" variable="userService" externalInfoUrl="https://pmd.github.io/pmd-6.21.0/pmd_rules_java_errorprone.html#beanmembersshouldserialize" priority="3">
+Found non-transient, non-static member. Please mark as transient or provide accessors.
+</violation>
+<violation beginline="33" endline="33" begincolumn="28" endcolumn="41" rule="BeanMembersShouldSerialize" ruleset="Error Prone" package="com.tactfactory.monprojetsb.services" class="UserServiceWithProductsTest" variable="userRepository" externalInfoUrl="https://pmd.github.io/pmd-6.21.0/pmd_rules_java_errorprone.html#beanmembersshouldserialize" priority="3">
+Found non-transient, non-static member. Please mark as transient or provide accessors.
+</violation>
+<violation beginline="36" endline="36" begincolumn="31" endcolumn="47" rule="BeanMembersShouldSerialize" ruleset="Error Prone" package="com.tactfactory.monprojetsb.services" class="UserServiceWithProductsTest" variable="productRepository" externalInfoUrl="https://pmd.github.io/pmd-6.21.0/pmd_rules_java_errorprone.html#beanmembersshouldserialize" priority="3">
+Found non-transient, non-static member. Please mark as transient or provide accessors.
+</violation>
+<violation beginline="38" endline="38" begincolumn="21" endcolumn="33" rule="BeanMembersShouldSerialize" ruleset="Error Prone" package="com.tactfactory.monprojetsb.services" class="UserServiceWithProductsTest" variable="productEntity" externalInfoUrl="https://pmd.github.io/pmd-6.21.0/pmd_rules_java_errorprone.html#beanmembersshouldserialize" priority="3">
+Found non-transient, non-static member. Please mark as transient or provide accessors.
+</violation>
+<violation beginline="39" endline="39" begincolumn="18" endcolumn="27" rule="BeanMembersShouldSerialize" ruleset="Error Prone" package="com.tactfactory.monprojetsb.services" class="UserServiceWithProductsTest" variable="userEntity" externalInfoUrl="https://pmd.github.io/pmd-6.21.0/pmd_rules_java_errorprone.html#beanmembersshouldserialize" priority="3">
+Found non-transient, non-static member. Please mark as transient or provide accessors.
+</violation>
+<violation beginline="98" endline="107" begincolumn="17" endcolumn="63" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="com.tactfactory.monprojetsb.services" class="UserServiceWithProductsTest" method="userTestInsertionWithProductUpdate" variable="product" externalInfoUrl="https://pmd.github.io/pmd-6.21.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
+Found 'DU'-anomaly for variable 'product' (lines '98'-'107').
+</violation>
+<violation beginline="160" endline="162" begincolumn="13" endcolumn="26" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="com.tactfactory.monprojetsb.services" class="UserServiceWithProductsTest" method="isValid" variable="isValid" externalInfoUrl="https://pmd.github.io/pmd-6.21.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
+Found 'DD'-anomaly for variable 'isValid' (lines '160'-'162').
+</violation>
+<violation beginline="168" endline="170" begincolumn="13" endcolumn="26" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="com.tactfactory.monprojetsb.services" class="UserServiceWithProductsTest" method="productIsValid" variable="isValid" externalInfoUrl="https://pmd.github.io/pmd-6.21.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
+Found 'DD'-anomaly for variable 'isValid' (lines '168'-'170').
+</violation>
+</file>
+</pmd>
