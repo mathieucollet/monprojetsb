@@ -1,15 +1,16 @@
 package com.tactfactory.monprojetsb.services;
 
-import com.tactfactory.monprojetsb.dao.ProductRepository;
+import com.tactfactory.monprojetsb.ApplicationTests;
 import com.tactfactory.monprojetsb.dao.UserRepository;
 import com.tactfactory.monprojetsb.entities.User;
+import com.tactfactory.monprojetsb.mocks.repositories.MockitoUserRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.domain.EntityScan;
-import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
-import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-import org.springframework.context.annotation.ComponentScan;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.TestPropertySource;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,60 +18,56 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-@EntityScan(basePackages = "com.tactfactory.monprojetsb")
-@ComponentScan(basePackages = "com.tactfactory.monprojetsb")
-@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
-@DataJpaTest
+@ActiveProfiles("test")
+@TestPropertySource(locations = {"classpath:application-test.properties"})
+@SpringBootTest(classes = ApplicationTests.class)
 public class UserServiceTest {
 
     @Autowired
     private UserService userService;
 
-    @Autowired
+    @MockBean
     private UserRepository userRepository;
 
-    @Autowired
-    private ProductRepository productRepository;
+    private User userEntity;
 
     @BeforeEach
-    public void cleanUserTable() {
-        userRepository.deleteAll();
-        productRepository.deleteAll();
+    public void setUp() throws Exception {
+        final MockitoUserRepository mock = new MockitoUserRepository(this.userRepository);
+        mock.initialize();
+        userEntity = mock.entity;
     }
 
     @Test
     public void userTestInsertionAddARecord() {
         long beforeInsert = userRepository.count();
-        userService.save(new User());
+        userService.save(userEntity);
         long afterInsert = userRepository.count();
         assertEquals(beforeInsert + 1, afterInsert);
     }
 
     @Test
     public void userTestInsertionDoNotAlterData() {
-        User user = new User("Prénom", "Nom");
-        userService.save(user);
-        User createdUser = userRepository.findById(user.getId()).get();
-        assertTrue(isValid(createdUser, user));
+        userService.save(userEntity);
+        User createdUser = userRepository.findById(userEntity.getId()).get();
+        assertTrue(isValid(createdUser, userEntity));
     }
 
     @Test
     public void userTestUpdateDoNoAlterData() {
-        User user = new User("Prénom", "Nom");
-        userService.save(user);
-        User createdUser = userRepository.findById(user.getId()).get();
+        userService.save(userEntity);
+        User createdUser = userRepository.findById(userEntity.getId()).get();
         createdUser.setFirstname("NouveauPrénom");
         userService.save(createdUser);
-        User updatedUser = userRepository.findById(user.getId()).get();
-        assertTrue(isValid(updatedUser, user));
+        User updatedUser = userRepository.findById(userEntity.getId()).get();
+        assertTrue(isValid(updatedUser, createdUser));
     }
 
     @Test
     public void userTestFindDataAreTheGoodOnes() {
-        User user = new User("Prénom", "Nom");
-        userRepository.save(user);
-        User createdUser = userService.findById(user.getId());
-        assertTrue(isValid(createdUser, user));
+        userRepository.save(userEntity);
+        User createdUser = userService.findById(userEntity.getId());
+        assertTrue(isValid(createdUser, userEntity));
     }
 
     @Test
@@ -88,10 +85,9 @@ public class UserServiceTest {
 
     @Test
     public void userTestDeleteRemoveARecord() {
-        User user = new User();
-        userRepository.save(user);
+        userRepository.save(userEntity);
         long beforeInsert = userRepository.count();
-        userService.delete(user);
+        userService.delete(userEntity);
         long afterInsert = userRepository.count();
         assertEquals(beforeInsert, afterInsert + 1);
     }

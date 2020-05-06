@@ -1,15 +1,16 @@
 package com.tactfactory.monprojetsb.services;
 
+import com.tactfactory.monprojetsb.ApplicationTests;
 import com.tactfactory.monprojetsb.dao.ProductRepository;
-import com.tactfactory.monprojetsb.dao.UserRepository;
 import com.tactfactory.monprojetsb.entities.Product;
+import com.tactfactory.monprojetsb.mocks.repositories.MockitoProductRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.domain.EntityScan;
-import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
-import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-import org.springframework.context.annotation.ComponentScan;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.TestPropertySource;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,60 +18,56 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-@EntityScan(basePackages = "com.tactfactory.monprojetsb")
-@ComponentScan(basePackages = "com.tactfactory.monprojetsb")
-@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
-@DataJpaTest
+@ActiveProfiles("test")
+@TestPropertySource(locations = {"classpath:application-test.properties"})
+@SpringBootTest(classes = ApplicationTests.class)
 public class ProductServiceTest {
 
     @Autowired
     private ProductService productService;
 
-    @Autowired
+    @MockBean
     private ProductRepository productRepository;
 
-    @Autowired
-    private UserRepository userRepository;
+    private Product productEntity;
 
     @BeforeEach
-    public void cleanProductTable() {
-        userRepository.deleteAll();
-        productRepository.deleteAll();
+    public void setUp() throws Exception {
+        final MockitoProductRepository productMock = new MockitoProductRepository(this.productRepository);
+        productMock.initialize();
+        productEntity = productMock.entity;
     }
 
     @Test
     public void productTestInsertionAddARecord() {
         long beforeInsert = productRepository.count();
-        productService.save(new Product());
+        productService.save(productEntity);
         long afterInsert = productRepository.count();
         assertEquals(beforeInsert + 1, afterInsert);
     }
 
     @Test
     public void productTestInsertionDoNotAlterData() {
-        Product product = new Product("Nom", 10.0F);
-        productService.save(product);
-        Product createdProduct = productRepository.findById(product.getId()).get();
-        assertTrue(isValid(createdProduct, product));
+        productService.save(productEntity);
+        Product createdProduct = productRepository.findById(productEntity.getId()).get();
+        assertTrue(isValid(createdProduct, productEntity));
     }
 
     @Test
     public void productTestUpdateDoNoAlterData() {
-        Product product = new Product("Nom", 10.0F);
-        productService.save(product);
-        Product createdProduct = productRepository.findById(product.getId()).get();
+        productService.save(productEntity);
+        Product createdProduct = productRepository.findById(productEntity.getId()).get();
         createdProduct.setName("NouveauNom");
         productService.save(createdProduct);
-        Product updatedProduct = productRepository.findById(product.getId()).get();
-        assertTrue(isValid(updatedProduct, product));
+        Product updatedProduct = productRepository.findById(productEntity.getId()).get();
+        assertTrue(isValid(updatedProduct, createdProduct));
     }
 
     @Test
     public void productTestFindDataAreTheGoodOnes() {
-        Product product = new Product("Nom", 10.0F);
-        productRepository.save(product);
-        Product createdProduct = productService.findById(product.getId());
-        assertTrue(isValid(createdProduct, product));
+        productRepository.save(productEntity);
+        Product createdProduct = productService.findById(productEntity.getId());
+        assertTrue(isValid(createdProduct, productEntity));
     }
 
     @Test
@@ -88,10 +85,9 @@ public class ProductServiceTest {
 
     @Test
     public void productTestDeleteRemoveARecord() {
-        Product product = new Product();
-        productRepository.save(product);
+        productRepository.save(productEntity);
         long beforeInsert = productRepository.count();
-        productService.delete(product);
+        productService.delete(productEntity);
         long afterInsert = productRepository.count();
         assertEquals(beforeInsert, afterInsert + 1);
     }
